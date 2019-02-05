@@ -20,9 +20,6 @@ public class FirstTest extends BaseTest {
         Pages.searchForm().search("Java");
         Pages.searchForm().submitSearchForm();
 
-        Pages.searchResult().getName(0);
-        Pages.searchResult().getAuthor(0);
-
         ArrayList<Book> books = new ArrayList<Book>();
 
         for (int i = 0; i < Pages.searchResult().getItemsNum(); i++){
