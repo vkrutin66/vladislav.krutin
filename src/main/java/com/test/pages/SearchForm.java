@@ -9,14 +9,14 @@ public class SearchForm extends BasePage {
 
     Locator searchInput = new ID("twotabsearchtextbox");
 
-    Locator searchBut = new XPath("//input[@class='nav-input']");
+    Locator searchButton = new XPath("//input[@class='nav-input']");
 
-    public void search(String s){
-        type( "Type:" + s , s, searchInput);
+    public void typeSearchField(String value){
+        type( "Type:" + value , value, searchInput);
     }
 
     public void submitSearchForm(){
-        click("Search button click", searchBut);
+        click("Search button click", searchButton);
     }
 
 }

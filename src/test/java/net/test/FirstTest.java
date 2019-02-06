@@ -17,28 +17,11 @@ public class FirstTest extends BaseTest {
 
         Actions.mainActions().openMainPage();
 
-        Pages.searchForm().search("Java");
-        Pages.searchForm().submitSearchForm();
+        Actions.mainActions().search("Java");
 
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<Book> books = Actions.mainActions().getBooksList();
 
-        for (int i = 0; i < Pages.searchResult().getItemsNum(); i++){
-
-            Book book = new Book();
-            book.setName(Pages.searchResult().getName(i));
-            book.setAuthor(Pages.searchResult().getAuthor(i));
-            book.setPrice(Pages.searchResult().getPrice(i));
-            book.setRate(Pages.searchResult().getStars(i));
-
-            books.add(book);
-        }
-
-        boolean isBookInside = false;
-        for(int j = 0; j < books.size() ; j++) {
-            if( books.get(j).getName().equals("Head First Java, 2nd Edition")){
-                isBookInside = true;
-            }
-        }
+        boolean isBookInside = Actions.mainActions().isBookInsideList(books, "Head First Java, 2nd Edition");
 
         Assert.assertTrue(isBookInside, "book on amazon");
 
